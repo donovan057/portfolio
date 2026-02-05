@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages reçus</title>
+
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    {% include 'sidebar.html' %}
+
+    <main class="content">
+
+        <h1 class="page-title">Messages reçus</h1>
+        <p class="page-subtitle">Tous les messages envoyés via ton formulaire de contact</p>
+
+        <div class="messages-list">
+
+            {% for msg in messages %}
+            <div class="message-card">
+                <h3>{{ msg.name }} — <span>{{ msg.email }}</span></h3>
+                <p class="message-date">{{ msg.date }}</p>
+                <p class="message-text">{{ msg.message }}</p>
+
+                <form method="post" action="/admin/messages/delete/{{ msg.id }}">
+                    <button class="delete-btn">Supprimer</button>
+                </form>
+            </div>
+            {% endfor %}
+
+            {% if messages|length == 0 %}
+            <p>Aucun message pour le moment.</p>
+            {% endif %}
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

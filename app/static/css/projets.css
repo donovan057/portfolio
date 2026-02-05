@@ -1,0 +1,225 @@
+/* --------------------------------------------------
+   PROJECTS PAGE — PREMIUM ANIMATED
+-------------------------------------------------- */
+
+.projects-page {
+    padding-top: 180px;
+    padding-bottom: 100px;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* --------------------------------------------------
+   HEADER MODERNE AVEC RECTANGLE ARRONDI
+-------------------------------------------------- */
+
+.projects-header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+    padding: 0 20px;
+}
+
+.projects-header-box {
+    background: rgba(255,255,255,0.05);
+    border-radius: 22px;
+    padding: 40px 55px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 35px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease forwards;
+    max-width: 700px;
+    width: 100%;
+    position: relative;
+}
+
+/* Glow animé autour du header */
+.projects-header-box::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        rgba(74,108,247,0.0),
+        rgba(74,108,247,0.4),
+        rgba(74,108,247,0.0)
+    );
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: glowMove 3s linear infinite;
+}
+
+.projects-header-box:hover::before {
+    opacity: 1;
+}
+
+/* Titre */
+.projects-header-box h1 {
+    font-size: 46px;
+    margin: 0;
+    color: var(--accent);
+    text-shadow: 0 0 12px rgba(74,108,247,0.4);
+}
+
+/* Ligne animée */
+.animated-line {
+    width: 120px;
+    height: 4px;
+    margin: 18px auto 0 auto;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        rgba(74,108,247,0.1),
+        var(--accent),
+        rgba(74,108,247,0.1)
+    );
+    background-size: 200% 100%;
+    animation: lineMove 2.5s linear infinite, lineGlow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 12px rgba(74,108,247,0.4);
+}
+
+/* Sous-titre */
+.projects-header-box p {
+    font-size: 20px;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* --------------------------------------------------
+   GRID
+-------------------------------------------------- */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --------------------------------------------------
+   CARD PREMIUM + GLOW + HOVER MAGNÉTIQUE
+-------------------------------------------------- */
+
+.project-card {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 40px 30px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-align: center;
+    cursor: pointer;
+
+    /* Animation universelle */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardFade 0.8s ease forwards;
+    animation-delay: calc(var(--i, 1) * 0.12s);
+}
+
+/* Glow animé */
+.project-card::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        rgba(74,108,247,0.0),
+        rgba(74,108,247,0.4),
+        rgba(74,108,247,0.0)
+    );
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: glowMove 3s linear infinite;
+}
+
+.project-card:hover::before {
+    opacity: 1;
+}
+
+/* Hover magnétique */
+.project-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 0 40px rgba(74,108,247,0.45);
+}
+
+.project-card:hover .project-icon {
+    transform: scale(1.18);
+}
+
+/* Icones */
+.project-icon {
+    font-size: 48px;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* Textes */
+.project-card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.project-card p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+
+@keyframes cardFade {
+    from { opacity: 0; transform: translateY(25px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes glowMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes lineMove {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes lineGlow {
+    0% { box-shadow: 0 0 6px rgba(74,108,247,0.3); }
+    100% { box-shadow: 0 0 18px rgba(74,108,247,0.7); }
+}
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .projects-header-box h1 {
+        font-size: 34px;
+    }
+
+    .projects-header-box p {
+        font-size: 17px;
+    }
+
+    .project-card {
+        padding: 30px 22px;
+    }
+}

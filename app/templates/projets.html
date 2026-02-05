@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="projects-page">
+
+    <!-- Header moderne -->
+    <section class="projects-header">
+        <div class="projects-header-box">
+            <h1>Mes projets</h1>
+            <div class="animated-line"></div>
+            <p>Une sélection de projets réalisés avec soin, performance et expertise.</p>
+        </div>
+    </section>
+
+    <!-- 🔵 SECTION 1 : PROJETS FIXES -->
+    <div class="projects-grid">
+
+        <div class="project-card" style="--i:1">
+            <div class="project-icon">🤖</div>
+            <h3>Bot Discord avancé</h3>
+            <p>Permissions, logs, commandes slash, base de données.</p>
+        </div>
+
+        <div class="project-card" style="--i:2">
+            <div class="project-icon">🖥️</div>
+            <h3>Panel Web utilisateur</h3>
+            <p>Dashboard moderne, statistiques, gestion de comptes.</p>
+        </div>
+
+        <div class="project-card" style="--i:3">
+            <div class="project-icon">⚡</div>
+            <h3>API FastAPI</h3>
+            <p>API rapide, sécurisée, documentation automatique.</p>
+        </div>
+
+        <div class="project-card" style="--i:4">
+            <div class="project-icon">🗄️</div>
+            <h3>Système de données</h3>
+            <p>Stockage optimisé, requêtes rapides, architecture propre.</p>
+        </div>
+
+        <div class="project-card" style="--i:5">
+            <div class="project-icon">🌐</div>
+            <h3>Déploiement complet</h3>
+            <p>Nginx, HTTPS, VPS, monitoring et optimisation.</p>
+        </div>
+
+        <div class="project-card" style="--i:6">
+            <div class="project-icon">💡</div>
+            <h3>Projet sur mesure</h3>
+            <p>Développement personnalisé selon les besoins clients.</p>
+        </div>
+
+    </div>
+
+    <!-- 🔵 SECTION 2 : PROJETS DYNAMIQUES -->
+    {% if projects|length > 0 %}
+    <h2 class="dynamic-title">Projets ajoutés récemment</h2>
+
+    <div class="projects-grid">
+
+        {% for project in projects %}
+        <div class="project-card" style="--i:{{ loop.index + 6 }}">
+            <div class="project-icon">📌</div>
+            <h3>{{ project.title }}</h3>
+            <p>{{ project.description }}</p>
+
+            {% if project.link %}
+            <a href="{{ project.link }}" target="_blank" class="project-link">Voir le projet</a>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+    </div>
+    {% endif %}
+
+</section>
+
+{% endblock %}

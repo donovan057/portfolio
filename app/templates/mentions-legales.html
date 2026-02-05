@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="legal-page">
+
+    <!-- HEADER -->
+    <div class="legal-header">
+        <h1>Mentions légales</h1>
+        <p>Informations légales concernant l’éditeur, l’hébergement et l’utilisation du site.</p>
+        <div class="legal-meta">Dernière mise à jour : {{ year }}</div>
+    </div>
+
+    <!-- SECTION : ÉDITEUR -->
+    <div class="legal-section">
+        <h2>Éditeur du site</h2>
+        <p>
+            <strong>Nom :</strong> Donovan RINQUEBACH<br>
+            <strong>Statut :</strong> Développeur indépendant (micro‑entreprise en préparation)<br>
+            <strong>Adresse :</strong> Woippy, France<br>
+            <strong>Email :</strong> donovanrinquebach25@icloud.com
+        </p>
+    </div>
+
+    <!-- SECTION : RESPONSABILITÉ -->
+    <div class="legal-section">
+        <h2>Responsabilité</h2>
+        <p>
+            L’éditeur s’efforce de fournir des informations fiables et à jour. Cependant, il ne peut garantir
+            l’exactitude, la complétude ou l’actualité des contenus présents sur le site.
+        </p>
+        <p>
+            L’utilisation du site se fait sous la seule responsabilité de l’utilisateur. L’éditeur ne pourra être tenu
+            responsable des dommages directs ou indirects résultant de l’utilisation du site.
+        </p>
+    </div>
+
+    <!-- SECTION : HÉBERGEMENT -->
+    <div class="legal-section">
+        <h2>Hébergement</h2>
+        <p>
+            Le site est hébergé par :
+        </p>
+        <p>
+            <strong>Nom de l’hébergeur :</strong> IONOS SARL<br>
+            <strong>Adresse :</strong> 7 Place de la Gare, 57200 Sarreguemines, France<br>
+            <strong>Site web :</strong> https://www.ionos.fr
+        </p>
+    </div>
+
+    <!-- SECTION : PROPRIÉTÉ INTELLECTUELLE -->
+    <div class="legal-section">
+        <h2>Propriété intellectuelle</h2>
+        <p>
+            L’ensemble du contenu présent sur ce site (textes, images, vidéos, code, design, logo, etc.)
+            est protégé par le droit d’auteur.
+        </p>
+        <p>
+            Toute reproduction, modification ou diffusion sans autorisation est strictement interdite.
+        </p>
+    </div>
+
+    <!-- SECTION : DONNÉES PERSONNELLES -->
+    <div class="legal-section">
+        <h2>Données personnelles</h2>
+        <p>
+            Les informations collectées via le formulaire de contact sont utilisées uniquement pour répondre
+            aux demandes envoyées. Aucune donnée n’est vendue ou transmise à des tiers.
+        </p>
+        <p>
+            Pour plus d’informations, consultez la page
+            <a href="/politique-confidentialite">Politique de confidentialité</a>.
+        </p>
+    </div>
+
+    <!-- SECTION : COOKIES -->
+    <div class="legal-section">
+        <h2>Cookies</h2>
+        <p>
+            Ce site peut utiliser des cookies techniques pour améliorer l’expérience utilisateur.
+            Aucun cookie publicitaire ou de suivi n’est utilisé.
+        </p>
+    </div>
+
+</section>
+
+{% endblock %}

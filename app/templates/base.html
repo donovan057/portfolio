@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "Portfolio" }}</title>
+
+    <!-- CSS GLOBAL -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/theme.css">
+
+    <!-- CSS PAGES -->
+    <link rel="stylesheet" href="/static/css/services.css">
+    <link rel="stylesheet" href="/static/css/projets.css">
+    <link rel="stylesheet" href="/static/css/apropos.css">
+    <link rel="stylesheet" href="/static/css/mentions.css">
+    <link rel="stylesheet" href="/static/css/cgu.css">
+    <link rel="stylesheet" href="/static/css/confidentialite.css">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/contact.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/responsive.css') }}">
+    <link rel="stylesheet" href="/static/css/admin-projects.css">
+</head>
+
+<body>
+
+<!-- BACKGROUND VIDEO -->
+<video autoplay muted loop playsinline class="bg-video">
+    <source src="/static/videos/background.mp4" type="video/mp4">
+</video>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="logo"></div>
+
+    <ul class="nav-links">
+        <li><a href="/" class="{% if active_page == 'home' %}active{% endif %}">Accueil</a></li>
+        <li><a href="/services" class="{% if active_page == 'services' %}active{% endif %}">Services</a></li>
+        <li><a href="/projets" class="{% if active_page == 'projets' %}active{% endif %}">Projets</a></li>
+        <li><a href="/contact" class="{% if active_page == 'contact' %}active{% endif %}">Contact</a></li>
+        <li><a href="/apropos" class="{% if active_page == 'apropos' %}active{% endif %}">À propos</a></li>
+
+        <!-- ADMIN : visible uniquement si connecté -->
+        {% if request.session.get("admin") %}
+            <li><a href="/admin" class="admin-link">Admin</a></li>
+        {% else %}
+            <li><a href="/login" class="admin-link">Admin</a></li>
+        {% endif %}
+    </ul>
+</nav>
+
+<!-- PAGE CONTENT -->
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+
+    <div class="footer-content">
+
+        <!-- COLONNE 1 -->
+        <div class="footer-section">
+            <h3>Portfolio</h3>
+            <p>Développeur Python — Bots Discord & Web Panels</p>
+        </div>
+
+        <!-- COLONNE 2 (vide pour équilibrer la mise en page) -->
+        <div class="footer-section footer-empty"></div>
+
+        <!-- COLONNE 3 -->
+        <div class="footer-section contact-section">
+            <h3>Contact</h3>
+
+            <a href="mailto:donovanrinquebach25@icloud.com" class="contact-item">
+                <span class="contact-icon">📧</span>
+                <span class="contact-text">donovanrinquebach25@icloud.com</span>
+            </a>
+
+            <a href="https://discord.com/users/930008670014668870"
+               class="contact-item"
+               target="_blank"
+               rel="noopener noreferrer">
+                <span class="contact-icon">💬</span>
+                <span class="contact-text">Discord</span>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- COPYRIGHT -->
+    <div class="footer-bottom">
+        © {{ year }} Donovan RINQUEBACH — Tous droits réservés
+    </div>
+
+    <!-- MENTIONS LÉGALES / CONTACT / CGU -->
+    <div class="footer-legal">
+        <a href="/mentions-legales">Mentions légales</a>
+        <span>•</span>
+        <a href="/contact">Contact</a>
+        <span>•</span>
+        <a href="/cgu">CGU</a>
+        <span>•</span>
+        <a href="/politique-confidentialite">Politique de confidentialité</a>
+    </div>
+
+</footer>
+
+</body>
+</html>

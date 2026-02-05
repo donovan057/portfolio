@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des projets</title>
+
+    <!-- CSS ADMIN GLOBAL -->
+    <link rel="stylesheet" href="/static/css/admin.css">
+
+    <!-- CSS SPÉCIFIQUE À LA PAGE PROJETS -->
+    <link rel="stylesheet" href="/static/css/admin-projects.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    {% include 'sidebar.html' %}
+
+    <main class="content admin-projects-page">
+
+        <h1 class="page-title">Projets</h1>
+        <p class="page-subtitle">Ajouter, modifier ou supprimer des projets</p>
+
+        <!-- FORMULAIRE D'AJOUT -->
+        <div class="admin-add-box">
+            <h2>Ajouter un projet</h2>
+
+            <form method="post" action="/admin/projects/add">
+
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title" placeholder="Nom du projet" required>
+
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Décrivez le projet..." required></textarea>
+
+                <label for="link">Lien (GitHub, site...)</label>
+                <input type="text" id="link" name="link" placeholder="https://...">
+
+                <button type="submit">Ajouter</button>
+            </form>
+        </div>
+
+        <!-- LISTE DES PROJETS -->
+        <div class="admin-project-list">
+
+            {% if projects|length == 0 %}
+            <p class="no-projects">Aucun projet pour le moment.</p>
+            {% endif %}
+
+            {% for project in projects %}
+            <div class="admin-project-item">
+
+                <div>
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.description }}</p>
+                </div>
+
+                <div class="admin-project-actions">
+
+                    <!-- MODIFICATION -->
+                    <form method="post" action="/admin/projects/edit/{{ project.id }}">
+                        <input type="text" name="title" value="{{ project.title }}" required>
+                        <textarea name="description" required>{{ project.description }}</textarea>
+                        <input type="text" name="link" value="{{ project.link }}">
+                        <button class="admin-btn-edit">Modifier</button>
+                    </form>
+
+                    <!-- SUPPRESSION -->
+                    <form method="post" action="/admin/projects/delete/{{ project.id }}">
+                        <button class="admin-btn-delete">Supprimer</button>
+                    </form>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </main>
+
+</div>
+
+</body>
+</html>

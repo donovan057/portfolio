@@ -1,0 +1,41 @@
+<div class="sidebar">
+
+    <h2 class="sidebar-title">Administration</h2>
+
+    <ul class="sidebar-menu">
+
+        <li class="{% if active == 'dashboard' %}active{% endif %}">
+            <a href="/admin">
+                <span class="icon">📊</span>
+                Dashboard
+            </a>
+        </li>
+
+        <li class="{% if active == 'projects' %}active{% endif %}">
+            <a href="/admin/projects">
+                <span class="icon">📁</span>
+                Projets
+            </a>
+        </li>
+
+        <li class="{% if active == 'messages' %}active{% endif %}">
+            <a href="/admin/messages">
+                <span class="icon">💬</span>
+                Messages
+            </a>
+        </li>
+
+        <li class="{% if active == 'settings' %}active{% endif %}">
+            <a href="/admin/settings">
+                <span class="icon">⚙️</span>
+                Paramètres
+            </a>
+        </li>
+
+    </ul>
+
+    <form method="get" action="/logout">
+        <button class="logout-btn">Déconnexion</button>
+    </form>
+
+</div>

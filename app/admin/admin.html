@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Admin</title>
+
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <div class="sidebar-icon">⚙️</div>
+            <h2>Administration</h2>
+        </div>
+
+        <ul class="sidebar-menu">
+            <li><a href="/admin" class="active">📊 Dashboard</a></li>
+            <li><a href="/admin/projects">🗂️ Projets</a></li>
+            <li><a href="/admin/messages">💬 Messages</a></li>
+            <li><a href="/admin/settings">⚙️ Paramètres</a></li>
+        </ul>
+
+        <a href="/logout" class="logout-btn">🚪 Déconnexion</a>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+        <header class="topbar">
+            <h1>Bienvenue Donovan</h1>
+            <p class="subtitle">Voici un aperçu rapide de ton activité.</p>
+        </header>
+
+        <section class="cards">
+
+            <div class="card">
+                <h3>Dernière connexion</h3>
+                <p>{{ last_login }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Adresse IP</h3>
+                <p>{{ request.client.host }}</p>
+            </div>
+
+            <div class="card">
+                <h3>Projets</h3>
+                <p>Gérer les projets du portfolio</p>
+                <a href="/admin/projects" class="card-btn">Gérer</a>
+            </div>
+
+            <div class="card">
+                <h3>Messages</h3>
+                <p>Voir les messages reçus</p>
+                <a href="/admin/messages" class="card-btn">Consulter</a>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+</body>
+</html>

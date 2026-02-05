@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion Admin</title>
+
+    <link rel="stylesheet" href="/static/css/login.css">
+</head>
+
+<body>
+
+<div class="login-wrapper">
+
+    <div class="login-card">
+
+        <h1 class="title">Espace Administrateur</h1>
+        <p class="subtitle">Authentification requise</p>
+
+        {% if error %}
+        <div class="error-box">
+            <span class="error-icon">⚠️</span>
+            <span class="error-text">Identifiants incorrects</span>
+        </div>
+        {% endif %}
+
+        <form method="post" action="/login" id="loginForm">
+
+            <div class="input-group">
+                <label>Nom d'utilisateur</label>
+                <input type="text" name="username" required>
+            </div>
+
+            <div class="input-group">
+                <label>Mot de passe</label>
+                <input type="password" name="password" required>
+            </div>
+
+            <button type="submit" class="btn" id="loginBtn">
+                <span class="btn-text">Se connecter</span>
+                <span class="loader"></span>
+            </button>
+        </form>
+    </div>
+
+</div>
+
+<script>
+    const form = document.getElementById("loginForm");
+    const btn = document.getElementById("loginBtn");
+
+    form.addEventListener("submit", () => {
+        btn.classList.add("loading");
+    });
+</script>
+
+</body>
+</html>

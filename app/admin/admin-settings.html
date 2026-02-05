@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres</title>
+
+    <link rel="stylesheet" href="/static/css/admin.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    {% include 'sidebar.html' %}
+
+    <main class="content">
+
+        <h1 class="page-title">Paramètres</h1>
+        <p class="page-subtitle">Modifier les informations de sécurité</p>
+
+        {% if success %}
+        <div class="success-box">Mot de passe mis à jour avec succès</div>
+        {% endif %}
+
+        {% if error %}
+        <div class="error-box">Mot de passe actuel incorrect</div>
+        {% endif %}
+
+        <form method="post" action="/admin/settings" class="settings-form">
+
+            <div class="input-group">
+                <label>Mot de passe actuel</label>
+                <input type="password" name="old_password" required>
+            </div>
+
+            <div class="input-group">
+                <label>Nouveau mot de passe</label>
+                <input type="password" name="new_password" required>
+            </div>
+
+            <button type="submit" class="btn">Mettre à jour</button>
+        </form>
+
+    </main>
+
+</div>
+
+</body>
+</html>

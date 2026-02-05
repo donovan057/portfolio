@@ -1,0 +1,182 @@
+/* --------------------------------------------------
+   GLOBAL ADMIN
+-------------------------------------------------- */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Inter", sans-serif;
+    background: #050509;
+    color: #fff;
+}
+
+.admin-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --------------------------------------------------
+   SIDEBAR
+-------------------------------------------------- */
+
+.sidebar {
+    width: 260px;
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(14px);
+    border-right: 1px solid rgba(255,255,255,0.12);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.5s ease-out;
+}
+
+.sidebar-title {
+    font-size: 20px;
+    margin: 0 0 24px 0;
+    text-align: center;
+    color: #fff;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.sidebar-menu li {
+    margin-bottom: 12px;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 11px 13px;
+    border-radius: 10px;
+    color: #cfcfcf;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s ease;
+}
+
+.sidebar-menu li .icon {
+    font-size: 18px;
+}
+
+.sidebar-menu li.active a,
+.sidebar-menu li a:hover {
+    background: rgba(74,108,247,0.45);
+    color: #fff;
+    box-shadow: 0 0 14px rgba(74,108,247,0.55);
+    transform: translateX(3px);
+}
+
+/* Déconnexion */
+
+.logout-btn {
+    margin-top: auto;
+    padding: 11px 13px;
+    width: 100%;
+    border-radius: 10px;
+    background: rgba(255,60,60,0.5);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.25s ease;
+}
+
+.logout-btn:hover {
+    background: rgba(255,60,60,0.7);
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------
+   CONTENU PRINCIPAL
+-------------------------------------------------- */
+
+.content {
+    flex-grow: 1;
+    padding: 35px 40px;
+    margin-left: 260px;
+    animation: fadeIn 0.6s ease-out;
+}
+
+.page-title {
+    margin: 0;
+    font-size: 26px;
+}
+
+.page-subtitle {
+    margin-top: 6px;
+    margin-bottom: 28px;
+    opacity: 0.7;
+    font-size: 15px;
+}
+
+/* --------------------------------------------------
+   DASHBOARD CARDS
+-------------------------------------------------- */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 18px 20px;
+    backdrop-filter: blur(10px);
+    animation: fadeUp 0.5s ease-out;
+}
+
+.card h3 {
+    margin-top: 0;
+    font-size: 17px;
+}
+
+.card p {
+    margin: 6px 0 0 0;
+    opacity: 0.75;
+    font-size: 14px;
+}
+
+.card-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 14px;
+    background: #4a6cf7;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.25s;
+}
+
+.card-btn:hover {
+    background: #3a56c7;
+    transform: translateY(-2px);
+}
+
+/* --------------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to   { opacity: 1; transform: translateX(0); }
+}

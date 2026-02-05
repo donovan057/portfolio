@@ -1,0 +1,246 @@
+/* --------------------------------------------------
+   SERVICES PAGE — PREMIUM ANIMATED
+-------------------------------------------------- */
+
+.services-page {
+    padding-top: 180px;
+    padding-bottom: 100px;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+/* --------------------------------------------------
+   HEADER MODERNE CENTRÉ AVEC CARRÉ ARRONDI
+-------------------------------------------------- */
+
+.services-header-box {
+    background: rgba(255,255,255,0.05);
+    border-radius: 22px;
+    padding: 40px 55px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.12);
+    box-shadow: 0 0 35px rgba(0,0,0,0.25);
+    animation: fadeIn 0.8s ease forwards;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto 70px auto;
+    position: relative;
+}
+
+/* Glow animé autour du header */
+.services-header-box::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        rgba(74,108,247,0.0),
+        rgba(74,108,247,0.4),
+        rgba(74,108,247,0.0)
+    );
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: glowMove 3s linear infinite;
+}
+
+.services-header-box:hover::before {
+    opacity: 1;
+}
+
+/* Titre */
+.services-header-box h1 {
+    font-size: 46px;
+    margin: 0;
+    color: var(--accent);
+    text-shadow: 0 0 12px rgba(74,108,247,0.4);
+}
+
+/* Ligne animée sous le titre */
+.animated-line {
+    width: 120px;
+    height: 4px;
+    margin: 18px auto 0 auto;
+    border-radius: 10px;
+    background: linear-gradient(
+        90deg,
+        rgba(74,108,247,0.1),
+        var(--accent),
+        rgba(74,108,247,0.1)
+    );
+    background-size: 200% 100%;
+    animation: lineMove 2.5s linear infinite, lineGlow 2s ease-in-out infinite alternate;
+    box-shadow: 0 0 12px rgba(74,108,247,0.4);
+}
+
+/* Sous-titre */
+.services-header-box p {
+    font-size: 20px;
+    color: var(--text-muted);
+    margin-top: 12px;
+}
+
+/* --------------------------------------------------
+   GRID
+-------------------------------------------------- */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --------------------------------------------------
+   CARD PREMIUM + GLOW ANIMÉ + HOVER MAGNÉTIQUE
+-------------------------------------------------- */
+
+.service-card {
+    position: relative;
+    background: rgba(255,255,255,0.05);
+    border-radius: 20px;
+    padding: 40px 30px;
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(16px);
+    box-shadow: 0 0 25px rgba(0,0,0,0.25);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    text-align: center;
+    cursor: pointer;
+
+    /* Apparition */
+    opacity: 0;
+    transform: translateY(20px);
+    animation: cardFade 0.8s ease forwards;
+}
+
+/* Apparition progressive */
+.service-card:nth-child(1) { animation-delay: 0.1s; }
+.service-card:nth-child(2) { animation-delay: 0.2s; }
+.service-card:nth-child(3) { animation-delay: 0.3s; }
+.service-card:nth-child(4) { animation-delay: 0.4s; }
+.service-card:nth-child(5) { animation-delay: 0.5s; }
+.service-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* --------------------------------------------------
+   GLOW ANIMÉ AUTOUR DES CARTES
+-------------------------------------------------- */
+
+.service-card::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    background: linear-gradient(
+        120deg,
+        rgba(74,108,247,0.0),
+        rgba(74,108,247,0.4),
+        rgba(74,108,247,0.0)
+    );
+    filter: blur(18px);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+    animation: glowMove 3s linear infinite;
+}
+
+.service-card:hover::before {
+    opacity: 1;
+}
+
+/* Glow rotation */
+@keyframes glowMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------
+   HOVER MAGNÉTIQUE
+-------------------------------------------------- */
+
+.service-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 0 40px rgba(74,108,247,0.45);
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.18);
+}
+
+/* --------------------------------------------------
+   ICONES
+-------------------------------------------------- */
+
+.service-icon {
+    font-size: 48px;
+    margin-bottom: 18px;
+    transition: transform 0.3s ease;
+}
+
+/* --------------------------------------------------
+   TEXTES
+-------------------------------------------------- */
+
+.service-card h3 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   ANIMATIONS
+-------------------------------------------------- */
+
+@keyframes cardFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Ligne animée */
+@keyframes lineMove {
+    0% { background-position: 0% 0; }
+    100% { background-position: 200% 0; }
+}
+
+@keyframes lineGlow {
+    0% { box-shadow: 0 0 6px rgba(74,108,247,0.3); }
+    100% { box-shadow: 0 0 18px rgba(74,108,247,0.7); }
+}
+
+/* --------------------------------------------------
+   RESPONSIVE
+-------------------------------------------------- */
+
+@media (max-width: 768px) {
+    .services-header-box h1 {
+        font-size: 34px;
+    }
+
+    .services-header-box p {
+        font-size: 17px;
+    }
+
+    .service-card {
+        padding: 30px 22px;
+    }
+}
