@@ -16,28 +16,42 @@
 
     <main class="content">
 
-        <h1 class="page-title">Messages reçus</h1>
-        <p class="page-subtitle">Tous les messages envoyés via ton formulaire de contact</p>
+        <div class="page-header">
+            <h1 class="page-title">Messages reçus</h1>
+            <p class="page-subtitle">Tous les messages envoyés via ton formulaire de contact</p>
+        </div>
+
+        {% if messages|length == 0 %}
+        <div class="empty-box">
+            <div class="empty-icon">📭</div>
+            <h3>Aucun message pour le moment</h3>
+            <p>Les messages envoyés via ton formulaire apparaîtront ici.</p>
+        </div>
+        {% else %}
 
         <div class="messages-list">
 
             {% for msg in messages %}
             <div class="message-card">
-                <h3>{{ msg.name }} — <span>{{ msg.email }}</span></h3>
-                <p class="message-date">{{ msg.date }}</p>
+
+                <div class="message-header">
+                    <h3>{{ msg.name }}</h3>
+                    <span class="message-date">{{ msg.date }}</span>
+                </div>
+
+                <p class="message-email">{{ msg.email }}</p>
                 <p class="message-text">{{ msg.message }}</p>
 
                 <form method="post" action="/admin/messages/delete/{{ msg.id }}">
                     <button class="delete-btn">Supprimer</button>
                 </form>
+
             </div>
             {% endfor %}
 
-            {% if messages|length == 0 %}
-            <p>Aucun message pour le moment.</p>
-            {% endif %}
-
         </div>
+
+        {% endif %}
 
     </main>
 
