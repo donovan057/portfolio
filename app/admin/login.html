@@ -10,12 +10,12 @@
 
 <body>
 
-<div class="login-wrapper">
+<div class="login-container">
 
-    <div class="login-card">
+    <div class="login-box">
 
-        <h1 class="title">Espace Administrateur</h1>
-        <p class="subtitle">Authentification requise</p>
+        <h1 class="login-title">Espace Administrateur</h1>
+        <p class="login-subtitle">Authentification requise</p>
 
         {% if error %}
         <div class="error-box">
@@ -27,20 +27,22 @@
         <form method="post" action="/login" id="loginForm">
 
             <div class="input-group">
-                <label>Nom d'utilisateur</label>
-                <input type="text" name="username" required>
+                <label for="username">Nom d'utilisateur</label>
+                <input type="text" id="username" name="username" placeholder="admin" required>
             </div>
 
             <div class="input-group">
-                <label>Mot de passe</label>
-                <input type="password" name="password" required>
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="password" placeholder="••••••" required>
             </div>
 
-            <button type="submit" class="btn" id="loginBtn">
+            <button type="submit" class="login-btn" id="loginBtn">
                 <span class="btn-text">Se connecter</span>
                 <span class="loader"></span>
             </button>
+
         </form>
+
     </div>
 
 </div>
